@@ -16,6 +16,49 @@ fieldset {
   border: none;
 }
 
+h1, ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* header */
+header {
+  background: #2196f3;
+  color: #fff;
+  padding: 8px;
+}
+
+header h1 > a {
+  color: #fff;
+}
+
+header .header-nav ul {
+  display: flex;
+}
+
+header .header-nav ul > li:not(:last-child) {
+  padding-right: 10px;
+}
+
+header .header-nav ul > li a {
+  color: #fff;
+}
+
+header .header-nav ul > li a:hover {
+  color: crimson;
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* container */
 .container {
   width: 100%;
   max-width: 768px;
