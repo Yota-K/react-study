@@ -1,14 +1,14 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -16,7 +16,8 @@ fieldset {
   border: none;
 }
 
-h1, ul {
+h1,
+ul {
   margin: 0;
   padding: 0;
 }
@@ -63,4 +64,27 @@ header .header-nav ul > li a:hover {
   width: 100%;
   max-width: 768px;
   margin: auto;
+}
+
+/* todoItem */
+.todo-item {
+  position: relative;
+  display: flex;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  margin: 20px 0;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.todo-item__id {
+  padding-right: 12px;
+}
+
+.todo-item__done {
+  position: absolute;
+  top: 4px;
+  right: 14px;
+  color: red;
+  font-size: 18px;
 }
