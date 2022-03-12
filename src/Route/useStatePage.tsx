@@ -39,15 +39,15 @@ const UseStatePage: React.FC = () => {
         <form>
           <fieldset>
             <label htmlFor="name">名前</label>
-            <input id="name" name="name" type="text" onChange={handleChange} />
+            <input id="name" name="name" type="text" autoComplete="off" onChange={handleChange} />
           </fieldset> 
           <fieldset>
             <label htmlFor="email">メールアドレス</label>
-            <input id="email" name="email" type="email" onChange={handleChange} />
+            <input id="email" name="email" type="email" autoComplete="off" onChange={handleChange} />
           </fieldset>
           <fieldset>
             <label htmlFor="password">パスワード</label>
-            <input id="password" name="password" type="password" onChange={handleChange} />
+            <input id="password" name="password" type="password" autoComplete="off" onChange={handleChange} />
           </fieldset>
         </form>
         <div>
