@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { Link } from "react-router-dom";
 
 const Nav: React.FC = () => {
@@ -12,7 +12,9 @@ const Nav: React.FC = () => {
           <Link to="/use-effect">useEffectについて</Link>
         </li>
         <li>
-          <Link to="/use-reducer-and-use-context">useReducer, useContextについて</Link>
+          <Link to="/use-reducer-and-use-context">
+            useReducer, useContextについて
+          </Link>
         </li>
       </ul>
     </nav>

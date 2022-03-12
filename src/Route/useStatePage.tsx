@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 type FormData = {
   name: string;
@@ -12,19 +12,19 @@ const UseStatePage: React.FC = () => {
 
   // スプレッド構文でStateを変更する例
   const [form, setForm] = useState<FormData>({
-    name: '',
-    email: '',
-    password: '',
+    name: "",
+    email: "",
+    password: "",
   });
-  const {name, email, password } = form;
+  const { name, email, password } = form;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({
       ...form,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
- 
+
   return (
     <div className="container">
       <h2>useStateについて</h2>
@@ -39,15 +39,33 @@ const UseStatePage: React.FC = () => {
         <form>
           <fieldset>
             <label htmlFor="name">名前</label>
-            <input id="name" name="name" type="text" autoComplete="off" onChange={handleChange} />
-          </fieldset> 
+            <input
+              id="name"
+              name="name"
+              type="text"
+              autoComplete="off"
+              onChange={handleChange}
+            />
+          </fieldset>
           <fieldset>
             <label htmlFor="email">メールアドレス</label>
-            <input id="email" name="email" type="email" autoComplete="off" onChange={handleChange} />
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autoComplete="off"
+              onChange={handleChange}
+            />
           </fieldset>
           <fieldset>
             <label htmlFor="password">パスワード</label>
-            <input id="password" name="password" type="password" autoComplete="off" onChange={handleChange} />
+            <input
+              id="password"
+              name="password"
+              type="password"
+              autoComplete="off"
+              onChange={handleChange}
+            />
           </fieldset>
         </form>
         <div>

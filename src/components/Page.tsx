@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 
 type Props = {
   title: string;
@@ -7,12 +7,10 @@ type Props = {
 
 const Page: React.FC<Props> = ({ title, component }) => {
   useEffect(() => {
-    document.title = title || '';
+    document.title = title || "";
   }, [title]);
 
-  return (
-    <>{component}</>
-  );
+  return <>{component}</>;
 };
 
 export default Page;

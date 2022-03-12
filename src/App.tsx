@@ -1,7 +1,7 @@
-import React from 'react';
-import './App.css';
-import Header from './components/Header';
-import RouteConfig from './Route/RouteConfig'
+import React from "react";
+import "./App.css";
+import Header from "./components/Header";
+import RouteConfig from "./Route/RouteConfig";
 
 const App: React.FC = () => {
   return (
@@ -10,6 +10,6 @@ const App: React.FC = () => {
       <RouteConfig />
     </>
   );
-}
+};
 
 export default App;
