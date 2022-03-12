@@ -27,15 +27,15 @@ const UseStatePage: React.FC = () => {
  
   return (
     <div className="container">
-      <h1>useStateについて</h1>
+      <h2>useStateについて</h2>
       <div>
-        <h2>カウンターの例</h2>
+        <h3>カウンターの例</h3>
         <button onClick={() => setCount(count + 1)}>countUp</button>
         <button onClick={() => setCount(0)}>Reset</button>
         <p>{count}</p>
       </div>
       <div>
-        <h2>スプレッド構文でStateを変更する例</h2>
+        <h3>スプレッド構文でStateを変更する例</h3>
         <form>
           <fieldset>
             <label htmlFor="name">名前</label>
