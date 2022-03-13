@@ -1,10 +1,10 @@
 import React, { useReducer } from "react";
 import TodoApp from "../components/TodoUsingUseStateSample/TodoApp";
-import { default as TodoAppSample2 } from "../components/TodoUsingUseReducerUseContext/TodoApp";
+import { default as TodoAppSample2 } from "../components/TodoUsingUseContextUseReducer/TodoApp";
 import { TodoContext } from "../lib/reducer/todo/context";
 import { initialState, reducer } from "../lib/reducer/todo/reducer";
 
-const UseReducerAndUseContextPage: React.FC = () => {
+const UseContextUseReducerPage: React.FC = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <div className="container">
@@ -23,4 +23,4 @@ const UseReducerAndUseContextPage: React.FC = () => {
   );
 };
 
-export default UseReducerAndUseContextPage;
+export default UseContextUseReducerPage;

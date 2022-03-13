@@ -4,7 +4,7 @@ import Page from "../components/Page";
 import Home from "./Home";
 import UseStatePage from "./useStatePage";
 import UseEffectPage from "./useEffectPage";
-import UseReducerAndUseContextPage from "./useReduceerAndUseContextPage";
+import UseContextUseReducerPage from "./useContextUseReducerPage";
 
 const RouteConfig: React.FC = () => {
   const title = "React勉強会";
@@ -31,11 +31,11 @@ const RouteConfig: React.FC = () => {
         }
       />
       <Route
-        path="use-reducer-and-use-context"
+        path="use-context-use-reducer"
         element={
           <Page
-            title={`useReducer・useContextについて|${title}`}
-            component={<UseReducerAndUseContextPage />}
+            title={`useContext・useReducerについて|${title}`}
+            component={<UseContextUseReducerPage />}
           />
         }
       />

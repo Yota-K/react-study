@@ -12,8 +12,8 @@ const Nav: React.FC = () => {
           <Link to="/use-effect">useEffectについて</Link>
         </li>
         <li>
-          <Link to="/use-reducer-and-use-context">
-            useReducer, useContextについて
+          <Link to="/use-context-use-reducer">
+            useContext・useReducerについて
           </Link>
         </li>
       </ul>
