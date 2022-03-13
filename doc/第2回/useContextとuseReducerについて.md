@@ -145,8 +145,8 @@ export const reducer = (state: State, action: Action): State => {
 ## useStateとuseReducerの違い
 以下のような違いがある。
 
-| useState  | useReducer |
-| --- | --- |
+| | useState  | useReducer |
+| --- | --- | --- |
 | 扱えるStateの種類 | 文字列、数値、配列、オブジェクト、真偽値 | 配列かオブジェクト |
 | ローカル or グローバル | ローカル | グローバル |
 
