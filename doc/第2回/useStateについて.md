@@ -1,5 +1,5 @@
 # useStateについて
-Reactで状態（State）管理を行うためのフックス。
+Reactで状態（State）管理を行うためのフックス。   
 Reactで一番よく使うフックス。
 
 参考記事: https://ja.reactjs.org/docs/hooks-state.html

@@ -1,5 +1,5 @@
 # useContext・useReducerについて
-コンポーネントを跨いだ状態管理を行うときに使用するフックス。
+コンポーネントを跨いだ状態管理を行うときに使用するフックス。   
 グローバルステートの管理をしたい時に使用することが多い。
 
 ※ コンポーネントの中だけで状態管理が完結しているので、厳密にはグローバルステートではない。
@@ -7,14 +7,16 @@
 https://ics.media/entry/200409/
 
 ## useContextとは
-Reactの機能の一つであるContext（階層ごとにプロパティを渡すことなく、コンポーネントツリー内でデータを渡す方法のこと）の機能を提供するフックス。
+Reactの機能の一つであるContext（階層ごとにプロパティを渡すことなく、コンポーネントツリー内でデータを渡す方法のこと）の機能を提供するフックス。   
+
 Contextを生成する```createContext```とセットで使用することが多い。
 
 参考記事: https://ja.reactjs.org/docs/hooks-reference.html#usecontext
 
 ### 使い方
-```tsx
-// valueでContextで管理している値を取得できる
+valueにContextで管理している値が代入される
+
+```ts
 const value = useContext(MyContext);
 ```
 
@@ -62,8 +64,9 @@ function ThemedButton() {
 引用: https://ja.reactjs.org/docs/hooks-reference.html#usecontext
 
 ## useReducerとは
-useStateと同じく、Reactで状態管理を行うためのフックス。
-値の管理だけではなく、ロジックも記述することができるので、useStateよりも複雑な状態管理を行いたい時に適している。
+useStateと同じく、Reactで状態管理を行うためのフックス。   
+値の管理だけではなく、ロジックも記述することができるので、useStateよりも複雑な状態管理を行いたい時に適している。   
+
 useStateよりも複雑な状態を管理するときに使用する。
 
 参考記事: https://ja.reactjs.org/docs/hooks-reference.html#usereducer
@@ -144,15 +147,15 @@ export const reducer = (state: State, action: Action): State => {
 
 | useState  | useReducer |
 | --- | --- |
-| 扱えるStateの種類 | 文字列、数値、配列、オブジェクト、ブーリアン | 配列かオブジェクト |
+| 扱えるStateの種類 | 文字列、数値、配列、オブジェクト、真偽値 | 配列かオブジェクト |
 | ローカル or グローバル | ローカル | グローバル |
 
 ## useContext・useReducerの主な用途
 * コンポーネントを跨いだ状態を管理するとき
-  * ログイン状態
+  * 認証状態の管理
   * ユーザー情報を編集した時に、サイドバーやヘッダーのユーザー名を更新する
   * ページネーションの状態やメニューの開閉状態を別ページに遷移しても保持する
-* propsのバケツリレーをせずに状態を管理したい時
+* propsのバケツリレーをせずに状態の管理・変更を行いたい時
 
 ## その他
 Vueで例えるなら、こんな感じ。
