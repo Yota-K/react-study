@@ -4,7 +4,7 @@ Reactで一番よく使うフックス。
 
 参考記事: https://ja.reactjs.org/docs/hooks-state.html
 
-※ 状態のことはここから先Stateと呼ぶ。
+※ 状態のことは以下、Stateと呼ぶ。
 
 ## 使い方
 state変数を宣言する際、2つの要素を含んだ配列が返却される
@@ -22,6 +22,8 @@ const [count, setCount] = useState(0);
 以下のコードでは、```count```というState変数でStateを保持して、```setCount```という関数でcountの状態の変更を行っている。
 
 ```tsx
+import React, { useState } from "react";
+
 const UseStatePage: React.FC = () => {
   const [count, setCount] = useState(0);
 
@@ -45,20 +47,28 @@ export default UseStatePage;
 サンプルコードのように、スプレッド構文を用いて複数のStateの中から特定のStateのみを変更することも可能。
 
 ```ts
-  // スプレッド構文でStateを変更する例
-  const [form, setForm] = useState<FormData>({
-    name: "",
-    email: "",
-    password: "",
-  });
-  const { name, email, password } = form;
+import { useState } from "react";
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
-  };
+type FormData = {
+  name: string;
+  email: string;
+  password: string;
+};
+
+// スプレッド構文でStateを変更する例
+const [form, setForm] = useState<FormData>({
+  name: "",
+  email: "",
+  password: "",
+});
+const { name, email, password } = form;
+
+const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  setForm({
+    ...form,
+    [e.target.name]: e.target.value,
+  });
+};
 ```
 
 ## useStateの主な用途
@@ -72,5 +82,8 @@ export default UseStatePage;
 ## その他
 Vueで例えるなら、こんな感じ。
 
-* 2系以前・・・data関数
-* 3系・・・reactive, ref
+* 2系以前（Options API）
+  * data関数
+* 3系（Composition API）
+  * reactive
+  * ref
