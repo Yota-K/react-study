@@ -1,10 +1,11 @@
 # Hooksとは
-
-従来classコンポーネントでしか使用できなかったstate等の機能をfunctionalコンポーネント(関数コンポーネント)でも使用可能にする機能です。
+従来classコンポーネントでしか使用できなかったstate等の機能をfunctionalコンポーネント(関数コンポーネント)でも使用可能にする機能のこと。
 
 引用: https://qiita.com/k-penguin-sato/items/b27e3936f8d383a4dbc7
 
 ## Classコンポーネントでの記述法
+全体的に処理が長くなってしまい、読みづらい。。。
+
 ```tsx
 import React from "react";
 
@@ -29,6 +30,8 @@ class CountComponent extends React.Component {
 ```
 
 ## 関数コンポーネントでの記述法
+関数単位でUIを構築できるので、処理がスッキリ読みやすい！
+
 ```tsx
 import React, { useState } from "react";
 
