@@ -4,6 +4,7 @@ import Page from "../components/Page";
 import Home from "./Home";
 import UseStatePage from "./useStatePage";
 import UseEffectPage from "./useEffectPage";
+import UserPage from "./UserPage";
 import UseContextUseReducerPage from "./useContextUseReducerPage";
 
 const RouteConfig: React.FC = () => {
@@ -36,6 +37,15 @@ const RouteConfig: React.FC = () => {
           <Page
             title={`useContext・useReducerについて|${title}`}
             component={<UseContextUseReducerPage />}
+          />
+        }
+      />
+      <Route
+        path="user/:userId"
+        element={
+          <Page
+            title={`React Router動的ルーティングの例|${title}`}
+            component={<UserPage />}
           />
         }
       />
