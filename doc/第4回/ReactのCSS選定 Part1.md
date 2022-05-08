@@ -8,10 +8,10 @@ ReactのCSSの主な記述方法としては以下のようなものが挙げら
 * CSS Framework
 
 今回はReactを使用するときに迷いがちな「ReactのCSS選定について」まとめてみました。   
-この回では、CSSにフィチャーしたいので、話の趣旨が若干ずれてしまいそうなUIライブラリ（MUI・Chakra UIなど）に関してはあまり触れません。
+この回では、CSSにフィーチャーしたいので、話の趣旨が若干ずれてしまいそうなUIライブラリ（MUI・Chakra UIなど）に関してはあまり触れません。
 
 ## いきなり結論
-あくまで個人の見解ですが、2022年5月時点だと、**CSS in JS**か**CSS FW**のどちらかがおすすめです。
+あくまで個人の見解ですが、2022年5月時点だと、**CSS in JS**か**CSS Framework**のどちらかがおすすめです。
 
 ## なぜPureCSSとCSS Modulesがおすすめできないのか
 PureCSSとCSS Modulesは以下のような理由からおすすめはできません。
@@ -57,12 +57,14 @@ const Home: React.FC = () => {
 export default Home;
 ```
 
+### CSS in JSの特徴
 CSS in JSには以下のような特徴があります
 
 * CSSの有効範囲を絞ることができる
 * CSSのクラスはランダムなハッシュ値として出力されるので、クラス名を考える必要がない
 * JSなのでpropsで動的にスタイルを変更したり、三項演算子を使って条件ごとにスタイルを切り替えたりできる
 
+### 主なCSS in JS
 CSS in JSにはいくつかの種類があります。   
 主要な物としては以下のライブラリが挙げられます。
 
@@ -72,19 +74,132 @@ CSS in JSにはいくつかの種類があります。
 * [vanilla-extract](https://github.com/seek-oss/vanilla-extract)
 
 ここで紹介した物以外にもいくつかライブラリが存在しますが、大きく分けると「テンプレートリテラルスタイル」と「オブジェクトスタイル」の2種類に分けることができます。   
-→ 正式名称ではなく、自分で勝手に命名しました。
-
-**個人開発での導入事例**
-
-[カルキチブログ](https://karukichi-blog.netlify.app/)
 
 ### テンプレートリテラルスタイル
-jsのテンプレートリテラルでCSSを記述できるスタイルのことを指します。
+jsのテンプレートリテラルでCSSを記述できるスタイルのことを指します。   
+PureCSSに近い感覚でCSSを記述できるので、柔軟にスタイルの記述を行いたい際はこちらがおすすめです。
+
+**emotionの場合**
+
+```ts
+import { css, cx } from '@emotion/css'
+
+const color = 'white'
+
+render(
+  <div
+    className={css`
+      padding: 32px;
+      background-color: hotpink;
+      font-size: 24px;
+      border-radius: 4px;
+      &:hover {
+        color: ${color};
+      }
+    `}
+  >
+    Hover to change color.
+  </div>
+)
+```
+
+**styled-componentsの場合**
+
+```ts
+const Button = styled.a`
+  /* This renders the buttons above... Edit me! */
+  display: inline-block;
+  border-radius: 3px;
+  padding: 0.5rem 0;
+  margin: 0.5rem 1rem;
+  width: 11rem;
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+
+  /* The GitHub button is a primary button
+   * edit this to target it specifically! */
+  ${props => props.primary && css`
+    background: white;
+    color: black;
+  `}
+`
+
+render(
+  <div>
+    <Button
+      href="https://github.com/styled-components/styled-components"
+      target="_blank"
+      rel="noopener"
+      primary
+    >
+      GitHub
+    </Button>
+
+    <Button as={Link} href="/docs">
+      Documentation
+    </Button>
+  </div>
+)
+```
 
 ### オブジェクトスタイル
-jsのオブジェクトでCSSを記述できるスタイルのことを指します。
+jsのオブジェクトでCSSを記述できるスタイルのことを指します。   
+TypeScriptを導入している場合はTSの補完が使えるので、JSを書くような感覚でスタイルの記述を行うことができます。
+
+**emotionの場合**
+
+```ts
+import React from "react";
+import { Link } from "react-router-dom";
+import { css } from "@emotion/react";
+
+const Header: React.FC = () => {
+  const heading = css`
+    a {
+      color: #fff;
+    }
+  `;
+
+  return (
+    <header
+      css={css({
+        background: "#2196f3",
+        color: "#fff",
+        padding: "8px",
+      })}
+    >
+      <h1 css={heading}>
+        <Link to="/">React勉強会第4回</Link>
+      </h1>
+    </header>
+  );
+};
+
+export default Header;
+```
+
+**vanilla-extractの場合**
+
+```style.css.ts
+import { style } from '@vanilla-extract/css';
+
+export const hero = style({
+  backgroundColor: vars.color.brandd,
+  color: vars.color.white,
+  padding: vars.space.large
+});
+```
+
+擬似要素や擬似クラス、メディアクエリ、隣接セレクタなどは問題なく使用できますが、子要素の指定がライブラリによってはできないことがあるので、複雑なデザインを再現する必要がある場合はあまり向いていないかもしれません。   
+→ vanilla-extractなどの例外はあります。
 
 ## CSS Framework
+CSS Frameworkとはフレームワークで定義されたクラスを適用するだけで、デザインを構築するができる枠組みのようなものです。   
+うまく使いこなすことで、ボタンやフォーム、レイアウトなどを効率よく作成することができます。
+
+### CSS Frameworkの特徴
+CSS Frameworkには以下のような特徴があります。
 
 * メリット
   * 形になるまでが早いので、生産性が高い
@@ -93,12 +208,10 @@ jsのオブジェクトでCSSを記述できるスタイルのことを指しま
   * フレームワークの作法を覚える手間がかかる
   * CSSの微調整（paddingやrotateを1px単位で調整したいとか）が非常に面倒
 
-個人の見解ですが、1px単位でスタイルを調整する必要があるケース（ウェブ制作や凝ったデザインのアプリケーション）では採用することはまずないです。
+短期間でUIを構築しないといけない時には非常に役に立ちますが。1px単位でスタイルを調整するのは難しいため、ウェブ制作や凝ったデザインのアプリケーションでの採用はおすすめできません。
 
-**個人開発での導入事例**
-
-[カラパイアまとめ](https://karapaia-matome-front.vercel.app/)
-
+### 主なCSS Framework
+CSS Frameworkにもいくつか種類がありますが、 最近はUtility Classやテーマの概念が存在する[Tailwind CSS](https://github.com/tailwindlabs/tailwindcss)が採用されることが多いです。
 
 ## 使い分けについて
 個人的には以下の使い分けがいいのかなと考えています。
@@ -112,3 +225,9 @@ jsのオブジェクトでCSSを記述できるスタイルのことを指しま
     * シンプルなデザインの場合・・・CSS in JS（テンプレートスタイル、オブジェクトスタイル）、CSS FW
     * 複雑なデザインの場合・・・CSS in JS（テンプレートスタイル、オブジェクトスタイル）
   * デザイナーがいない場合・・・CSS Framework（本筋からは外れるが、そもそもデザイナーがいない場合はMUI・chakra UIなどUIコンポーネント生成する系のライブラリも候補に入る）
+
+## その他
+個人開発での導入事例。
+
+* [カルキチブログ（styled-components）](https://karukichi-blog.netlify.app/)
+* [カラパイアまとめ（Tailwind CSS）](https://karapaia-matome-front.vercel.app/)
