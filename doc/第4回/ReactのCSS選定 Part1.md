@@ -185,9 +185,9 @@ export default Header;
 import { style } from '@vanilla-extract/css';
 
 export const hero = style({
-  backgroundColor: vars.color.brandd,
-  color: vars.color.white,
-  padding: vars.space.large
+  backgroundColor: 'red',
+  color: '#fff',
+  padding: '12px'
 });
 ```
 
