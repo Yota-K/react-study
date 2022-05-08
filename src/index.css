@@ -31,16 +31,6 @@ a {
 }
 
 /* header */
-header {
-  background: #2196f3;
-  color: #fff;
-  padding: 8px;
-}
-
-header h1 > a {
-  color: #fff;
-}
-
 header .header-nav ul {
   display: flex;
 }
