@@ -27,6 +27,43 @@ PureCSSとCSS Modulesは以下のような理由からおすすめはできま�
 
 参考: https://zenn.dev/irico/articles/d0b2d8160d8e63
 
+### CSS Modules
+スタイルシートをReactコンポーネントで読み込んで、スタイルを記述する方法です。
+````xxx.module.css```という拡張子のスタイルシートを用意して、React側のclassNameでスタイルを適用すると以下のようなクラスが生成されます。
+
+```css
+.Button_error_h1heu {
+  color: white;
+  background-color: red;
+}
+```
+
+```ファイル名 + CSSのクラス名 + 一意な文字列```のクラス名を自動生成してくれるため、ピュアCSSとほぼ同じ使用感で、CSSの有効範囲を限定することができます。
+
+**Button.module.css**
+
+```css
+.error {
+  color: white;
+  background-color: red;
+}
+```
+
+```tsx
+import React from 'react';
+import styles from './Button.module.css'
+
+/* classNameには、スタイルシートで定義したclass名を指定する */
+const Button: React.FC = () => (
+  <button className={styles.error}>
+    Destroy
+  </button>
+)
+```
+
+サンプルコードはCSSですが、SCSSでも記述可能です。   
+scssで記述する場合は、````xxx.module.scss```という拡張子になります。
+
 ## CSS in JS
 CSSをJSで記述することができるというものです。   
 以下のコードはstyed-componentsというライブラリを使用してスタイルを記述した例です。
