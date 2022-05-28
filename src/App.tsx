@@ -1,7 +1,6 @@
 import React from "react";
 import "./App.css";
 import Header from "./components/Header";
-import PortalSample from "./components/PortalSample";
 import RouteConfig from "./Route/RouteConfig";
 
 const App: React.FC = () => {
@@ -9,7 +8,6 @@ const App: React.FC = () => {
     <>
       <Header />
       <RouteConfig />
-      <PortalSample />
     </>
   );
 };
